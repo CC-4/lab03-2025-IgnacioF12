@@ -78,16 +78,16 @@ public class Parser {
     // Funcion que verifica la precedencia de un operador
     private int pre(Token op) {
         /* TODO: Su codigo aqui */
-
+        
         /* El codigo de esta seccion se explicara en clase */
 
         switch(op.getId()) {
-        	case Token.PLUS:
-        		return 1;
-        	case Token.MULT:
-        		return 2;
-        	default:
-        		return -1;
+            case Token.PLUS:
+                return 1;
+            case Token.MULT:
+                return 2;
+            default:
+                return -1;
         }
     }
 
@@ -99,14 +99,14 @@ public class Parser {
         /* El codigo de esta seccion se explicara en clase */
 
         if (op.equals(Token.PLUS)) {
-        	double a = this.operandos.pop();
-        	double b = this.operandos.pop();
+            double a = this.operandos.pop();
+            double b = this.operandos.pop();
         	// print para debug, quitarlo al terminar
-        	System.out.println("suma " + a + " + " + b);
-        	this.operandos.push(a + b);
+            System.out.println("suma " + a + " + " + b);
+            this.operandos.push(a + b);
         } else if (op.equals(Token.MULT)) {
-        	double a = this.operandos.pop();
-        	double b = this.operandos.pop();
+            double a = this.operandos.pop();
+            double b = this.operandos.pop();
         	// print para debug, quitarlo al terminar
         	System.out.println("mult " + a + " * " + b);
         	this.operandos.push(a * b);
@@ -117,7 +117,7 @@ public class Parser {
         /* TODO: Su codigo aqui */
 
         /* Casi todo el codigo para esta seccion se vera en clase */
-    	
+        
     	// Si no hay operandos automaticamente ingresamos op al stack
 
     	// Si si hay operandos:
