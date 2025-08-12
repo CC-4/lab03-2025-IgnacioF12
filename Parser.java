@@ -134,8 +134,55 @@ public class Parser {
     }
 
     private boolean E() {
+        if (T()){
+            return  Ep();
+        }
         return false;
     }
 
     /* TODO: sus otras funciones aqui */
+    private  boolean  Ep(){
+        if(next < tokens.size()){
+            int currentTokeinId = tokens.get(next).getId();
+            if (currentTokeinId == Token.PLUS || currentTokeinId == Token.MINUS){
+                if (term(currentTokeinId) && T()){
+                    return Ep();
+                }
+                return false;
+            }
+        }
+        return  true;
+    }
+
+    private boolean T(){
+        if (F()){
+            return Tp();
+        }
+        return false;
+    }
+
+    private  boolean Tp(){
+        if (next < tokens.size()){
+            int currentTokeinId = tokens.get(next).getId();
+            if(currentTokeinId == Token.MULT || currentTokeinId == Token.DIV){
+                if (term(currentTokeinId) && F()) {
+                    return Tp();
+                }
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean F(){
+        if (next < tokens.size()){
+            int currentTokeinId = tokens.get(next).getId();
+            if (currentTokeinId == Token.NUMBER){
+                return term(Token.NUMBER);
+            } else if (currentTokeinId == Token.LPAREN){
+                return term(Token.LPAREN) && E() && term(Token.RPAREN);
+            }
+        }
+        return false;
+    }
 }
